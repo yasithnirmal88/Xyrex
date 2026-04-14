@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-body bg-background text-on-surface antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+}
+
+@layer components {
+  .luxury-glass {
+    @apply bg-white/[0.03] backdrop-blur-[40px] border border-white/[0.08] relative overflow-hidden;
+    box-shadow: inset 0 0 40px 0 rgba(255, 255, 255, 0.01), 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+  }
+  .luxury-glass::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255, 0.05) 0%, transparent 60%);
+  }
+
+  .neon-glow-primary {
+    filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.4));
+  }
+
+  .noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Premium Nav Hover */
+  .nav-link {
+    @apply relative py-1 opacity-60 hover:opacity-100 transition-all duration-300;
+  }
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 ease-out;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Antigravity Drift */
+  .antigravity {
+    animation: drifting 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes drifting {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-12px); }
+  }
+
+  @keyframes flow-down {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+  }
+
+  /* 3D Holographic System */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+  @keyframes spin-slow-reverse { 100% { transform: rotate(-360deg); } }
+  @keyframes spin-3d-x { 100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(90deg); } }
+  @keyframes spin-3d-y { 100% { transform: rotateY(360deg) rotateX(180deg) rotateZ(-90deg); } }
+  
+  .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+  .animate-spin-slow-reverse { animation: spin-slow-reverse 25s linear infinite; }
+  .animate-spin-3d-x { animation: spin-3d-x 15s linear infinite; }
+  .animate-spin-3d-y { animation: spin-3d-y 18s linear infinite; }
+
+  /* Animated Shine Text */
+  .shine-text {
+    background: linear-gradient(90deg, #fff, rgba(255,255,255,0.2), #fff);
+    background-size: 200% auto;
+    animation: shine 5s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+
+  /* Ambient Gradient Drift */
+  .ambient-bg-drift {
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255, 100, 200, 0.1), transparent 40%);
+    animation: floatAmbient 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatAmbient {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 10% 10%; }
+  }
+
+  /* Cinematic Fade Slide */
+  .reveal-base {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom Utilities */
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+.stagger-4 { animation-delay: 400ms; }
+
+/* Scroll reveal classes added by JS */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
