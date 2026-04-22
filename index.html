@@ -120,12 +120,64 @@
             <div class="max-w-[1440px] mx-auto px-6 md:px-12">
                 <p class="reveal text-center text-sm uppercase tracking-[0.3em] text-outline font-semibold mb-12">Trusted by industry leaders globally</p>
                 <div class="flex flex-wrap justify-center items-center gap-6 md:gap-20 opacity-60 grayscale transition-all hover:grayscale-0 hover:opacity-100 duration-500">
-                    <!-- Generic clean tech logos for demo, simulating premium brands -->
                     <div class="reveal h-8 text-base md:text-xl font-headline font-bold flex items-center gap-2 whitespace-nowrap"><span class="material-symbols-outlined fill text-primary text-lg md:text-2xl">all_inclusive</span> AlphaScale</div>
                     <div class="reveal h-8 text-base md:text-xl font-headline font-bold flex items-center gap-2 whitespace-nowrap"><span class="material-symbols-outlined fill text-secondary text-lg md:text-2xl">explore</span> NexusCorp</div>
                     <div class="reveal h-8 text-base md:text-xl font-headline font-bold flex items-center gap-2 whitespace-nowrap"><span class="material-symbols-outlined fill text-tertiary text-lg md:text-2xl">diamond</span> SyncTech</div>
                     <div class="reveal h-8 text-base md:text-xl font-headline font-bold flex items-center gap-2 whitespace-nowrap"><span class="material-symbols-outlined fill text-primary text-lg md:text-2xl">filter_drama</span> CloudFrame</div>
                     <div class="reveal h-8 text-base md:text-xl font-headline font-bold flex items-center gap-2 whitespace-nowrap"><span class="material-symbols-outlined fill text-outline text-lg md:text-2xl">architecture</span> OmniFlow</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Homepage Highlight (Horizontal Scroll) -->
+        <section data-view="home" class="py-24 relative overflow-hidden block">
+            <div class="px-6 md:px-12 max-w-[1440px] mx-auto mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+                <div class="max-w-2xl">
+                    <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 inline-block reveal">Our Identity</span>
+                    <h2 class="reveal text-3xl md:text-4xl font-bold text-white font-headline uppercase leading-[1.1] tracking-tight">
+                        Built for the <br/> <span class="gradient-text italic">Autonomous Future.</span>
+                    </h2>
+                </div>
+                <button data-target="about" class="nav-btn reveal group text-white/50 hover:text-white font-bold uppercase tracking-[0.2em] text-[10px] transition-all flex items-center gap-4 border-b border-white/10 pb-2">
+                    View Full Profile <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                </button>
+            </div>
+
+            <div class="flex overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar px-6 md:px-[calc((100vw-1440px)/2+48px)] gap-6">
+                <!-- Card 1: The Vision -->
+                <div class="min-w-[85vw] md:min-w-[400px] aspect-[4/5] md:aspect-[16/10] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <span class="material-symbols-outlined text-primary text-3xl">rocket_launch</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">The Xyrex Vision</h3>
+                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">Bridging the gap between legacy industrial systems and the autonomous future through precision engineering.</p>
+                    </div>
+                    <button data-target="about" class="nav-btn w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More</button>
+                </div>
+
+                <!-- Card 2: Applied AI -->
+                <div class="min-w-[85vw] md:min-w-[400px] aspect-[4/5] md:aspect-[16/10] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700" style="animation-delay: 0.1s;">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">Applied Intelligence</h3>
+                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">We don't build hype. We build AI that actually works within your existing operational constraints.</p>
+                    </div>
+                    <button data-target="about" class="nav-btn w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More</button>
+                </div>
+
+                <!-- Card 3: Reliability -->
+                <div class="min-w-[85vw] md:min-w-[400px] aspect-[4/5] md:aspect-[16/10] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700" style="animation-delay: 0.2s;">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">Uncompromising Reliability</h3>
+                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">Performance over promises. Our systems are engineered for 99.9% uptime in mission-critical environments.</p>
+                    </div>
+                    <button data-target="about" class="nav-btn w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More</button>
                 </div>
             </div>
         </section>
