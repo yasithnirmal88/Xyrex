@@ -142,19 +142,27 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('text-white');
             btn.classList.remove('text-on-surface-variant');
 
-            // 2. Crossfade Sections
-            sections.forEach(sec => {
-                const viewsStr = sec.getAttribute('data-view');
+            // 2. Crossfade View Elements (Sections and Individual Components)
+            const viewElements = document.querySelectorAll('[data-view]');
+            viewElements.forEach(el => {
+                const viewsStr = el.getAttribute('data-view');
                 const views = viewsStr ? viewsStr.split(' ') : [];
                 
                 if(views.includes(targetView)) {
-                    sec.classList.remove('hidden');
-                    sec.classList.add('block');
-                    // Reset animation states dynamically
-                    gsap.fromTo(sec, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+                    el.classList.remove('hidden');
+                    // Add block if it's a section, otherwise let its default display rule take over
+                    if (el.tagName === 'SECTION') {
+                        el.classList.add('block');
+                    }
+                    // Trigger animation for newly visible elements
+                    if (el.classList.contains('reveal') || el.tagName === 'SECTION') {
+                        gsap.fromTo(el, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+                    }
                 } else {
-                    sec.classList.remove('block');
-                    sec.classList.add('hidden');
+                    if (el.tagName === 'SECTION') {
+                        el.classList.remove('block');
+                    }
+                    el.classList.add('hidden');
                 }
             });
 
