@@ -145,40 +145,35 @@
             </div>
 
             <div class="flex overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar px-6 md:px-[calc((100vw-1440px)/2+48px)] gap-6">
-                <!-- Card 1: The Vision -->
-                <div class="min-w-[85vw] md:min-w-[400px] aspect-[4/5] md:aspect-[16/10] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700">
-                    <div>
+                <!-- Single Card: About Xyrex -->
+                <div class="min-w-[85vw] md:min-w-[600px] aspect-[4/5] md:aspect-[21/9] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col md:flex-row items-center justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700">
+                    <div class="max-w-md">
                         <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                            <span class="material-symbols-outlined text-primary text-3xl">rocket_launch</span>
+                            <span class="material-symbols-outlined text-primary text-3xl">corporate_fare</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">The Xyrex Vision</h3>
-                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">Bridging the gap between legacy industrial systems and the autonomous future through precision engineering.</p>
+                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">About Xyrex</h3>
+                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">Xyrex is a high-performance software engineering firm specialized in bridging the gap between legacy industrial systems and the autonomous future.</p>
+                        <button data-target="about" class="nav-btn mt-8 w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More About Us</button>
                     </div>
-                    <button data-target="about" class="nav-btn w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More</button>
-                </div>
-
-                <!-- Card 2: Applied AI -->
-                <div class="min-w-[85vw] md:min-w-[400px] aspect-[4/5] md:aspect-[16/10] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700" style="animation-delay: 0.1s;">
-                    <div>
-                        <div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                            <span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+                    <div class="hidden md:block w-px h-32 bg-white/10 mx-12"></div>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <div class="text-2xl font-bold text-primary mb-1">99.9%</div>
+                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Uptime</div>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">Applied Intelligence</h3>
-                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">We don't build hype. We build AI that actually works within your existing operational constraints.</p>
-                    </div>
-                    <button data-target="about" class="nav-btn w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More</button>
-                </div>
-
-                <!-- Card 3: Reliability -->
-                <div class="min-w-[85vw] md:min-w-[400px] aspect-[4/5] md:aspect-[16/10] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700" style="animation-delay: 0.2s;">
-                    <div>
-                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                            <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                        <div>
+                            <div class="text-2xl font-bold text-primary mb-1">24/7</div>
+                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Support</div>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">Uncompromising Reliability</h3>
-                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">Performance over promises. Our systems are engineered for 99.9% uptime in mission-critical environments.</p>
+                        <div>
+                            <div class="text-2xl font-bold text-primary mb-1">50+</div>
+                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Deployments</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-primary mb-1">15ms</div>
+                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Latency</div>
+                        </div>
                     </div>
-                    <button data-target="about" class="nav-btn w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More</button>
                 </div>
             </div>
         </section>
@@ -616,6 +611,10 @@
                             <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-emerald-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400/40"></span> Fast deployment cycles</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Project Highlights Homepage (Horizontal Scroll) -->
         <section data-view="home" class="py-24 relative overflow-hidden bg-[#080808]">
             <div class="px-6 md:px-12 max-w-[1440px] mx-auto mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -692,62 +691,7 @@
                 </div>
             </div>
         </section>
-                    <!-- Card 4: Ops & Reporting -->
-                    <div class="reveal parallax-card antigravity group luxury-glass p-10 rounded-[2.5rem] flex flex-col hover:border-amber-400/30 hover:shadow-[0_0_50px_-12px_rgba(251,191,36,0.15)] transition-all duration-700 min-w-[85vw] md:min-w-0 snap-center flex-shrink-0" style="animation-delay: -4s;">
-                        <div class="mb-8">
-                            <span class="text-[10px] tracking-[0.3em] font-bold text-amber-400 px-3 py-1 rounded-full border border-amber-400/20 uppercase font-dmsans mb-6 inline-block bg-amber-400/5">Visibility</span>
-                            <h3 class="text-2xl font-bold mb-4 text-white font-syne uppercase tracking-tight">Real-Time Business <br/>Intelligence</h3>
-                            <p class="text-white/40 text-sm font-dmsans leading-relaxed font-light mb-8 group-hover:text-white/60 transition-colors">
-                                Replace spreadsheets and guesswork with live dashboards your team actually uses.
-                            </p>
-                        </div>
-                        <ul class="space-y-3 mt-auto border-t border-white/5 pt-8">
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-amber-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-amber-400/40 shadow-[0_0_10px_rgba(251,191,36,0.5)]"></span> Live operations monitoring</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-amber-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-amber-400/40"></span> Custom reporting pipelines</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-amber-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-amber-400/40"></span> Industry-ready (solar, logistics)</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-amber-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-amber-400/40"></span> Data source integrations</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-amber-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-amber-400/40"></span> Built for non-technical teams</li>
-                        </ul>
-                    </div>
 
-                    <!-- Card 5: Product Development -->
-                    <div class="reveal parallax-card antigravity group luxury-glass p-10 rounded-[2.5rem] flex flex-col hover:border-rose-400/30 hover:shadow-[0_0_50px_-12px_rgba(251,113,133,0.15)] transition-all duration-700 min-w-[85vw] md:min-w-0 snap-center flex-shrink-0" style="animation-delay: -3s;">
-                        <div class="mb-8">
-                            <span class="text-[10px] tracking-[0.3em] font-bold text-rose-400 px-3 py-1 rounded-full border border-rose-400/20 uppercase font-dmsans mb-6 inline-block bg-rose-400/5">Innovation</span>
-                            <h3 class="text-2xl font-bold mb-4 text-white font-syne uppercase tracking-tight">From Idea to <br/>Scalable Product</h3>
-                            <p class="text-white/40 text-sm font-dmsans leading-relaxed font-light mb-8 group-hover:text-white/60 transition-colors">
-                                We identify real market gaps and build products designed to win — not just function.
-                            </p>
-                        </div>
-                        <ul class="space-y-3 mt-auto border-t border-white/5 pt-8">
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-rose-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-rose-400/40 shadow-[0_0_10px_rgba(251,113,133,0.5)]"></span> Market opportunity validation</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-rose-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-rose-400/40"></span> MVP strategy & prototyping</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-rose-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-rose-400/40"></span> End-to-end development</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-rose-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-rose-400/40"></span> Launch & iteration cycles</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-rose-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-rose-400/40"></span> Local + global market focus</li>
-                        </ul>
-                    </div>
-
-                    <!-- Card 6: Diagnosis -->
-                    <div class="reveal parallax-card antigravity group luxury-glass p-10 rounded-[2.5rem] flex flex-col hover:border-indigo-400/30 hover:shadow-[0_0_50px_-12px_rgba(129,140,248,0.15)] transition-all duration-700 min-w-[85vw] md:min-w-0 snap-center flex-shrink-0" style="animation-delay: -5s;">
-                        <div class="mb-8">
-                            <span class="text-[10px] tracking-[0.3em] font-bold text-indigo-400 px-3 py-1 rounded-full border border-indigo-400/20 uppercase font-dmsans mb-6 inline-block bg-indigo-400/5">Strategy</span>
-                            <h3 class="text-2xl font-bold mb-4 text-white font-syne uppercase tracking-tight">Clarity Before <br/>Commitment</h3>
-                            <p class="text-white/40 text-sm font-dmsans leading-relaxed font-light mb-8 group-hover:text-white/60 transition-colors">
-                                Not sure what you need? We analyze your business and give you a clear, actionable roadmap.
-                            </p>
-                        </div>
-                        <ul class="space-y-3 mt-auto border-t border-white/5 pt-8">
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-indigo-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400/40 shadow-[0_0_10px_rgba(129,140,248,0.5)]"></span> Initial consultation</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-indigo-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400/40"></span> Workflow & process audit</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-indigo-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400/40"></span> Cost + inefficiency analysis</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-indigo-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400/40"></span> Solution roadmap</li>
-                            <li class="flex items-center gap-3 text-xs font-dmsans text-white/30 group-hover:text-indigo-400 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400/40"></span> No fluff, no obligation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Our Work / Projects Section -->
         <section data-view="projects" id="work" class="bg-[#0a0a0a] border-y border-white/5 py-32 mb-40 relative hidden">
