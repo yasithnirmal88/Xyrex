@@ -106,14 +106,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. SPA Multi-View Routing
-    const navBtns = document.querySelectorAll('.nav-btn');
+    // 7. SPA Multi-View Routing & Mobile Menu
+    const navBtns = document.querySelectorAll('.nav-btn, .mobile-nav-btn');
     const sections = document.querySelectorAll('section[data-view]');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileClose = document.getElementById('mobile-menu-close');
+
+    const toggleMobileMenu = (open) => {
+        if (open) {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        } else {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        }
+    };
+
+    mobileToggle?.addEventListener('click', () => toggleMobileMenu(true));
+    mobileClose?.addEventListener('click', () => toggleMobileMenu(false));
 
     navBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const targetView = btn.getAttribute('data-target');
+
+            // Close mobile menu if open
+            toggleMobileMenu(false);
 
             // 1. Update Navigation Visuals
             navBtns.forEach(b => {

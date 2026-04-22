@@ -141,3 +141,20 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Mobile Nav Button Styling */
+.mobile-nav-btn {
+  @apply transition-all duration-300;
+}
+.mobile-nav-btn:active {
+  @apply scale-95 opacity-70;
+}
+
+/* Custom Scrollbar for Mobile Menu */
+#mobile-menu::-webkit-scrollbar {
+  display: none;
+}
+#mobile-menu {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
