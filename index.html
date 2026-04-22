@@ -130,48 +130,50 @@
             </div>
         </section>
 
-        <!-- About Us Homepage Highlight (Horizontal Scroll) -->
-        <section data-view="home" class="py-24 relative overflow-hidden block">
-            <div class="px-6 md:px-12 max-w-[1440px] mx-auto mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-                <div class="max-w-2xl">
-                    <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 inline-block reveal">Our Identity</span>
-                    <h2 class="reveal text-3xl md:text-4xl font-bold text-white font-headline uppercase leading-[1.1] tracking-tight">
-                        Built for the <br/> <span class="gradient-text italic">Autonomous Future.</span>
-                    </h2>
-                </div>
-                <button data-target="about" class="nav-btn reveal group text-white/50 hover:text-white font-bold uppercase tracking-[0.2em] text-[10px] transition-all flex items-center gap-4 border-b border-white/10 pb-2">
-                    View Full Profile <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                </button>
-            </div>
-
-            <div class="flex overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar px-6 md:px-[calc((100vw-1440px)/2+48px)] gap-6">
-                <!-- Single Card: About Xyrex -->
-                <div class="min-w-[85vw] md:min-w-[600px] aspect-[4/5] md:aspect-[21/9] bg-surface-container-low border border-white/5 rounded-[3rem] p-12 flex flex-col md:flex-row items-center justify-between snap-center reveal group hover:bg-surface-container-lowest transition-all duration-700">
-                    <div class="max-w-md">
-                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                            <span class="material-symbols-outlined text-primary text-3xl">corporate_fare</span>
+        <!-- About Us Homepage Highlight (Exact Reference Image Layout) -->
+        <section data-view="home" class="py-32 relative overflow-hidden block">
+            <div class="px-6 md:px-12 max-w-[1440px] mx-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                    <!-- Text Content -->
+                    <div class="max-w-2xl">
+                        <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-8 inline-block reveal">About Xyrex</span>
+                        <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white font-headline uppercase leading-[1.1] tracking-tight mb-10">
+                            We Build Applied AI <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white opacity-80 italic">That Actually Works.</span>
+                        </h2>
+                        <div class="space-y-6 text-on-surface-variant font-dmsans text-lg leading-relaxed font-light reveal">
+                            <p>Xyrex is an AI engineering company focused on one thing: turning advanced artificial intelligence into systems that deliver real business outcomes.</p>
+                            <p>We don’t experiment for the sake of it. We design, build, and deploy AI solutions that integrate directly into how your business operates.</p>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-6 font-headline">About Xyrex</h3>
-                        <p class="text-on-surface-variant/60 leading-relaxed font-light text-sm">Xyrex is a high-performance software engineering firm specialized in bridging the gap between legacy industrial systems and the autonomous future.</p>
-                        <button data-target="about" class="nav-btn mt-8 w-fit px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all">Learn More About Us</button>
+                        <button data-target="about" class="nav-btn mt-12 group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 hover:text-white transition-all">
+                            Learn More About Our Philosophy <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">east</span>
+                        </button>
                     </div>
-                    <div class="hidden md:block w-px h-32 bg-white/10 mx-12"></div>
-                    <div class="grid grid-cols-2 gap-8">
-                        <div>
-                            <div class="text-2xl font-bold text-primary mb-1">99.9%</div>
-                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Uptime</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-primary mb-1">24/7</div>
-                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Support</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-primary mb-1">50+</div>
-                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Deployments</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl font-bold text-primary mb-1">15ms</div>
-                            <div class="text-[10px] text-white/30 uppercase tracking-widest">Latency</div>
+
+                    <!-- Holographic Core Visual (Right Side) -->
+                    <div class="relative h-[400px] md:h-[500px] reveal flex items-center justify-center perspective-1000 group">
+                        <!-- Ambient Reactor Glows -->
+                        <div class="absolute inset-0 bg-primary/10 rounded-full blur-[60px] md:blur-[100px] group-hover:bg-primary/20 transition-all duration-1000 animate-pulse"></div>
+                        
+                        <!-- Anti-Gravity Housing -->
+                        <div class="relative w-64 h-64 md:w-80 md:h-80 preserve-3d animate-spin-slow flex items-center justify-center antigravity group-hover:scale-105 transition-transform duration-700">
+                            
+                            <!-- Outer Containment Ring -->
+                            <div class="absolute inset-0 border-[2px] border-white/5 rounded-full animate-spin-slow-reverse flex items-center justify-center">
+                                <!-- Orbital Node -->
+                                <div class="absolute -top-1.5 w-2 h-2 md:w-3 md:h-3 bg-primary rounded-full shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
+                            </div>
+                            
+                            <!-- The Core: logo1.png -->
+                            <div class="absolute inset-0 flex items-center justify-center preserve-3d">
+                                <!-- Suspended Glass Hexagon/Chamber -->
+                                <div class="relative w-32 h-32 md:w-40 md:h-40 luxury-glass rounded-3xl border-white/20 shadow-[0_0_40px_rgba(var(--primary-fixed-rgb),0.2)] flex items-center justify-center animate-spin-slow-reverse overflow-hidden">
+                                    <!-- Inner Light Pool -->
+                                    <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 opacity-50"></div>
+                                    <!-- Brand Asset -->
+                                    <img src="/logo1.png" alt="Xyrex Core Logo" class="w-16 h-16 md:w-24 md:h-24 object-contain filter drop-shadow-[0_0_25px_rgba(255,255,255,0.6)] z-10" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
