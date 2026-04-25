@@ -88,7 +88,6 @@
     </style>
 </head>
 <body class="selection:bg-primary selection:text-on-primary">
-<!-- Navigation Shell -->
 <nav class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-xl dark:bg-[#131314]/60 shadow-xl shadow-[#3C3DCA]/5">
 <div class="flex justify-between items-center px-6 md:px-12 py-6 max-w-[1440px] mx-auto">
 <div class="text-2xl font-bold tracking-tighter text-[#C0C1FF] uppercase font-headline"><img alt="Xyrex Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ujVGqFeXQqHvxCAi8ZpdiUtgh2UiCAvL6zlLq9i35aiOaW9bnxbqNlcoHijhQJQ_7ZsymCABx_mWOkU9BKi0h6PrTrWLADnXttiPUv5HIGG2X-0SHb930_kfZCDBBvZPS9pSJ47KoPWBYtKynoBghaKaMZ7mkTYPK7Urxf0gEiodK7lITxuWt8QuxMd-sd4qUj3zFivPkmFlLMdu_vqd02ozqOV4ht7TlDuShNPkpQuIJxEDKwQD2f55ngTocAZi9-B4djgLCh-"/></div>
@@ -100,15 +99,58 @@
 </div>
 <div class="flex items-center space-x-4">
 <button class="hidden md:block text-white/70 font-medium hover:text-white transition-colors">Login</button>
-<button class="bg-[#C0C1FF] text-[#1000a9] px-6 py-2.5 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all duration-300">Build Now</button>
+<button class="hidden md:block bg-[#C0C1FF] text-[#1000a9] px-6 py-2.5 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all duration-300">Build Now</button>
+<button id="mobile-menu-toggle" class="md:hidden w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 transition-all">
+    <span class="material-symbols-outlined">menu</span>
+</button>
 </div>
 </div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#131314]/95 backdrop-blur-xl translate-x-full transition-transform duration-500 md:hidden flex flex-col items-center justify-center p-8">
+    <button id="mobile-menu-close" class="absolute top-8 right-8 w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-white">
+        <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="flex flex-col items-center space-y-8 w-full max-w-xs">
+        <a class="mobile-nav-btn text-2xl font-bold font-headline uppercase tracking-tighter text-[#C0C1FF]" href="#">Solutions</a>
+        <a class="mobile-nav-btn text-2xl font-bold font-headline uppercase tracking-tighter text-white/70 hover:text-white" href="#">Case Studies</a>
+        <a class="mobile-nav-btn text-2xl font-bold font-headline uppercase tracking-tighter text-white/70 hover:text-white" href="#">Process</a>
+        <a class="mobile-nav-btn text-2xl font-bold font-headline uppercase tracking-tighter text-white/70 hover:text-white" href="#">Pricing</a>
+        <div class="pt-8 w-full space-y-4">
+            <button class="mobile-nav-btn w-full bg-white/10 text-white py-4 rounded-xl font-bold text-lg">Login</button>
+            <button class="mobile-nav-btn w-full bg-[#C0C1FF] text-[#1000a9] py-4 rounded-xl font-bold text-lg">Build Now</button>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+
+        if (mobileMenuToggle && mobileMenuClose && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+            });
+
+            mobileMenuClose.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+
+            mobileNavBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                });
+            });
+        }
+    });
+</script>
 </nav>
-<main class="pt-32">
+<main class="pt-24 md:pt-32">
 <!-- Hero Section -->
-<section class="px-6 md:px-12 max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
+<section class="px-6 md:px-12 max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24 md:mb-32">
 <div class="lg:col-span-7">
-<h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 text-on-surface">
+<h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 text-on-surface">
                     We Build Systems That <span class="text-primary">Run Your Business</span> Automatically
                 </h1>
 <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-10 leading-relaxed">
@@ -137,7 +179,7 @@
 </div>
 </section>
 <!-- Social Proof -->
-<section class="bg-surface-container-lowest py-16 mb-32">
+<section class="bg-surface-container-lowest py-12 md:py-16 mb-24 md:mb-32">
 <div class="max-w-[1440px] mx-auto px-6 md:px-12">
 <p class="text-center text-label-md uppercase tracking-[0.2em] text-on-surface-variant/60 font-bold mb-12">Trusted by businesses worldwide</p>
 <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale contrast-150">
@@ -150,9 +192,9 @@
 </div>
 </section>
 <!-- Services -->
-<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-32">
+<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-24 md:mb-32">
 <div class="text-center mb-20">
-<h2 class="text-4xl md:text-5xl font-bold mb-6">Our Core Expertise</h2>
+<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Our Core Expertise</h2>
 <p class="text-on-surface-variant max-w-xl mx-auto">Engineered solutions for complex business challenges, delivered with architectural precision.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -191,10 +233,10 @@
 </div>
 </section>
 <!-- Case Studies -->
-<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-32">
+<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-24 md:mb-32">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 <div class="max-w-2xl">
-<h2 class="text-4xl md:text-5xl font-bold mb-4">Our Xyrex Process</h2>
+<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Our Xyrex Process</h2>
 <p class="text-on-surface-variant">Real results for real businesses. See how we've moved the needle.</p>
 </div>
 <button class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all uppercase tracking-widest text-sm">
@@ -244,10 +286,10 @@
 </div>
 </section>
 <!-- How It Works -->
-<section class="bg-surface-container-low py-32 mb-32">
+<section class="bg-surface-container-low py-20 md:py-32 mb-24 md:mb-32">
 <div class="max-w-[1440px] mx-auto px-6 md:px-12">
 <div class="text-center mb-20">
-<h2 class="text-4xl font-bold mb-4">Our Kinetic Process</h2>
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Our Kinetic Process</h2>
 <p class="text-on-surface-variant">The architect's blueprint for your success.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -281,7 +323,7 @@
 </div>
 </section>
 <!-- Testimonials -->
-<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-32">
+<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-24 md:mb-32">
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 <!-- Testimonial 1 -->
 <div class="bg-surface-container-high p-8 rounded-3xl border border-outline-variant/10">
@@ -340,9 +382,9 @@
 </div>
 </section>
 <!-- Why Choose Us -->
-<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-32 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-24 md:mb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
 <div>
-<h2 class="text-4xl font-bold mb-8">Why High-Growth Companies Choose Kinetic</h2>
+<h2 class="text-3xl md:text-4xl font-bold mb-8">Why High-Growth Companies Choose Kinetic</h2>
 <div class="space-y-6">
 <div class="flex gap-6 p-4 rounded-2xl hover:bg-surface-container transition-colors">
 <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
@@ -389,11 +431,11 @@
 </div>
 </section>
 <!-- Final CTA -->
-<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-32">
-<div class="gradient-primary rounded-[3rem] p-12 md:p-24 text-center text-on-primary shadow-2xl shadow-primary-container/30 relative overflow-hidden">
+<section class="px-6 md:px-12 max-w-[1440px] mx-auto mb-24 md:mb-32">
+<div class="gradient-primary rounded-[3rem] p-8 md:p-24 text-center text-on-primary shadow-2xl shadow-primary-container/30 relative overflow-hidden">
 <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
 <div class="relative z-10">
-<h2 class="text-4xl md:text-6xl font-extrabold mb-8">Let’s Build Your System</h2>
+<h2 class="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-8">Let’s Build Your System</h2>
 <p class="text-lg md:text-xl text-on-primary/80 max-w-2xl mx-auto mb-12">
                         Ready to automate your operations and unlock new levels of efficiency? Schedule your free consultation today.
                     </p>
