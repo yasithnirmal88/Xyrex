@@ -173,4 +173,141 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 50);
         });
     });
+
+    // Reviews System
+    const STORAGE_KEY = 'xyrex_reviews';
+
+    const SEED_REVIEWS = [
+        { id: 1, name: 'David Chen', rating: 5, message: 'The level of technical professionalism Xyrex brought to our operations was life-changing. Our manual processes are now fully automated.', date: '2026-03-15T10:00:00.000Z' },
+        { id: 2, name: 'Sarah Miller', rating: 5, message: 'They didn\'t just build a website; they built a revenue engine. Our conversions tripled within the first quarter of the new launch.', date: '2026-04-02T14:30:00.000Z' },
+        { id: 3, name: 'Marcus Thorne', rating: 4, message: 'Integrations used to be our nightmare. Xyrex unified our stack in weeks. Their architectural approach is truly superior.', date: '2026-05-10T09:15:00.000Z' },
+        { id: 4, name: 'Aaliyah Fernando', rating: 5, message: 'From concept to deployment, Xyrex handled everything with precision. Our Wild Trail Gear platform is exactly what we envisioned.', date: '2026-06-01T11:00:00.000Z' },
+        { id: 5, name: 'Rohan Perera', rating: 5, message: 'The automation system Xyrex built for us saved 30+ hours per week. Incredible ROI in just the first month.', date: '2026-06-18T16:45:00.000Z' },
+    ];
+
+    const getReviews = () => {
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (!stored) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_REVIEWS));
+                return SEED_REVIEWS;
+            }
+            return JSON.parse(stored) || [];
+        } catch {
+            return [];
+        }
+    };
+
+    const saveReview = (review) => {
+        const reviews = getReviews();
+        reviews.unshift({ id: Date.now(), ...review });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+        return reviews;
+    };
+
+    const renderStars = (rating) => {
+        return Array.from({ length: 5 }, (_, i) => i < rating ? '★' : '☆').join('');
+    };
+
+    const renderReviews = () => {
+        const grid = document.getElementById('reviews-grid');
+        if (!grid) return;
+        const reviews = getReviews();
+        if (reviews.length === 0) {
+            grid.innerHTML = '<div class="col-span-full text-center py-16"><span class="material-symbols-outlined text-5xl text-on-surface-variant/30 mb-4">rate_review</span><p class="text-on-surface-variant/50 text-lg">No reviews yet. Be the first to share your experience!</p></div>';
+            return;
+        }
+        grid.innerHTML = reviews.map(r => `
+            <div class="reveal bg-[#111] rounded-[2rem] p-8 border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col">
+                <div class="flex items-center gap-1 text-amber-400 text-lg mb-4">${renderStars(r.rating)}</div>
+                <p class="text-white/70 text-sm leading-relaxed mb-6 flex-grow">"${r.message}"</p>
+                <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-bold">${r.name.charAt(0).toUpperCase()}</div>
+                    <div>
+                        <div class="text-white font-bold text-sm">${r.name}</div>
+                        <div class="text-on-surface-variant/50 text-[10px]">Verified Client</div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    };
+
+    const starContainer = document.getElementById('star-rating');
+    const ratingInput = document.getElementById('review-rating');
+    if (starContainer && ratingInput) {
+        const stars = starContainer.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingInput.value = value;
+                stars.forEach((s, i) => s.textContent = i < value ? '★' : '☆');
+            });
+            star.addEventListener('mouseenter', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                stars.forEach((s, i) => s.textContent = i < value ? '★' : '☆');
+            });
+            star.addEventListener('mouseleave', () => {
+                const current = parseInt(ratingInput.value);
+                stars.forEach((s, i) => s.textContent = i < current ? '★' : '☆');
+            });
+        });
+    }
+
+    const reviewForm = document.getElementById('review-form');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value.trim();
+            const rating = parseInt(document.getElementById('review-rating').value);
+            const message = document.getElementById('review-message').value.trim();
+            if (!name || !rating || !message) {
+                alert('Please fill in all fields and select a rating.');
+                return;
+            }
+            saveReview({ name, rating, message, date: new Date().toISOString() });
+            renderReviews();
+            reviewForm.reset();
+            document.getElementById('review-rating').value = 0;
+            if (starContainer) starContainer.querySelectorAll('.star').forEach(s => s.textContent = '☆');
+            const btn = reviewForm.querySelector('button[type="submit"]');
+            const original = btn.textContent;
+            btn.textContent = 'Review Submitted!';
+            btn.style.background = '#10b981';
+            btn.style.color = 'white';
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.style.background = '';
+                btn.style.color = '';
+            }, 2000);
+        });
+    }
+
+    renderReviews();
+
+    const renderHomeCarousel = () => {
+        const track = document.getElementById('home-reviews-track');
+        if (!track) return;
+        const reviews = getReviews();
+        if (reviews.length === 0) {
+            track.innerHTML = '<div class="flex items-center gap-6 px-12 py-8 bg-[#111] rounded-[2rem] border border-white/5 mx-4" style="width: 400px;"><span class="material-symbols-outlined text-4xl text-on-surface-variant/30">rate_review</span><p class="text-on-surface-variant/50 whitespace-nowrap">No reviews yet — be the first!</p></div>';
+            return;
+        }
+        const card = (r) => `
+            <div class="bg-[#111] rounded-[2rem] p-8 border border-white/5 hover:border-white/10 transition-all duration-300 flex-shrink-0 mx-4" style="width: 360px;">
+                <div class="flex items-center gap-1 text-amber-400 text-base mb-4">${renderStars(r.rating)}</div>
+                <p class="text-white/70 text-sm leading-relaxed mb-6">"${r.message}"</p>
+                <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                    <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">${r.name.charAt(0).toUpperCase()}</div>
+                    <div>
+                        <div class="text-white font-bold text-sm">${r.name}</div>
+                        <div class="text-on-surface-variant/50 text-[10px]">Verified Client</div>
+                    </div>
+                </div>
+            </div>
+        `;
+        const cards = reviews.map(r => card(r)).join('');
+        track.innerHTML = cards + cards;
+    };
+
+    renderHomeCarousel();
 });
