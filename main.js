@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         const cards = reviews.map(r => card(r)).join('');
-        track.innerHTML = cards + cards;
+        track.innerHTML = cards.repeat(6);
     };
 
     renderHomeCarousel();
