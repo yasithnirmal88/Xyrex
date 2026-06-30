@@ -177,22 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reviews System
     const STORAGE_KEY = 'xyrex_reviews';
 
-    const SEED_REVIEWS = [
-        { id: 1, name: 'David Chen', rating: 5, message: 'The level of technical professionalism Xyrex brought to our operations was life-changing. Our manual processes are now fully automated.', date: '2026-03-15T10:00:00.000Z' },
-        { id: 2, name: 'Sarah Miller', rating: 5, message: 'They didn\'t just build a website; they built a revenue engine. Our conversions tripled within the first quarter of the new launch.', date: '2026-04-02T14:30:00.000Z' },
-        { id: 3, name: 'Marcus Thorne', rating: 4, message: 'Integrations used to be our nightmare. Xyrex unified our stack in weeks. Their architectural approach is truly superior.', date: '2026-05-10T09:15:00.000Z' },
-        { id: 4, name: 'Aaliyah Fernando', rating: 5, message: 'From concept to deployment, Xyrex handled everything with precision. Our Wild Trail Gear platform is exactly what we envisioned.', date: '2026-06-01T11:00:00.000Z' },
-        { id: 5, name: 'Rohan Perera', rating: 5, message: 'The automation system Xyrex built for us saved 30+ hours per week. Incredible ROI in just the first month.', date: '2026-06-18T16:45:00.000Z' },
-    ];
-
     const getReviews = () => {
         try {
             const stored = localStorage.getItem(STORAGE_KEY);
-            if (!stored) {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_REVIEWS));
-                return SEED_REVIEWS;
-            }
-            return JSON.parse(stored) || [];
+            return stored ? JSON.parse(stored) : [];
         } catch {
             return [];
         }
