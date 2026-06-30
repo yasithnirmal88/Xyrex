@@ -172,38 +172,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 ScrollTrigger.refresh();
             }, 50);
 
-            // 4. Re-render home carousel when navigating to home
-            if (targetView === 'home') renderHomeCarousel();
+            // 4. Re-fetch reviews when navigating to home or feedback
+            if (targetView === 'home' || targetView === 'feedback') fetchReviews();
         });
     });
 
     // Reviews System
-    const STORAGE_KEY = 'xyrex_reviews';
-
-    const getReviews = () => {
-        try {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            return stored ? JSON.parse(stored) : [];
-        } catch {
-            return [];
-        }
-    };
-
-    const saveReview = (review) => {
-        const reviews = getReviews();
-        reviews.unshift({ id: Date.now(), ...review });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-        return reviews;
-    };
+    const API = '/api/reviews';
 
     const renderStars = (rating) => {
         return Array.from({ length: 5 }, (_, i) => i < rating ? '★' : '☆').join('');
     };
 
-    const renderReviews = () => {
+    const renderReviews = (reviews) => {
         const grid = document.getElementById('reviews-grid');
         if (!grid) return;
-        const reviews = getReviews();
         if (reviews.length === 0) {
             grid.innerHTML = '<div class="col-span-full text-center py-16"><span class="material-symbols-outlined text-5xl text-on-surface-variant/30 mb-4">rate_review</span><p class="text-on-surface-variant/50 text-lg">No reviews yet. Be the first to share your experience!</p></div>';
             return;
@@ -222,6 +205,45 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
     };
+
+    const renderHomeCarousel = (reviews) => {
+        const track = document.getElementById('home-reviews-track');
+        if (!track) return;
+        if (reviews.length === 0) {
+            track.innerHTML = '<div class="flex items-center gap-6 px-12 py-8 bg-[#111] rounded-[2rem] border border-white/5 mx-4" style="width: 400px;"><span class="material-symbols-outlined text-4xl text-on-surface-variant/30">rate_review</span><p class="text-on-surface-variant/50 whitespace-nowrap">No reviews yet — be the first!</p></div>';
+            return;
+        }
+        const card = (r) => `
+            <div class="bg-[#111] rounded-[2rem] p-8 border border-white/5 hover:border-white/10 transition-all duration-300 flex-shrink-0 mx-4" style="width: 360px;">
+                <div class="flex items-center gap-1 text-amber-400 text-base mb-4">${renderStars(r.rating)}</div>
+                <p class="text-white/70 text-sm leading-relaxed mb-6">"${r.message}"</p>
+                <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                    <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">${r.name.charAt(0).toUpperCase()}</div>
+                    <div>
+                        <div class="text-white font-bold text-sm">${r.name}</div>
+                        <div class="text-on-surface-variant/50 text-[10px]">Verified Client</div>
+                    </div>
+                </div>
+            </div>
+        `;
+        const cards = reviews.map(r => card(r)).join('');
+        track.innerHTML = cards.repeat(6);
+    };
+
+    const fetchReviews = async () => {
+        try {
+            const res = await fetch(API);
+            if (!res.ok) return [];
+            const data = await res.json();
+            renderReviews(data);
+            renderHomeCarousel(data);
+        } catch {
+            renderReviews([]);
+            renderHomeCarousel([]);
+        }
+    };
+
+    fetchReviews();
 
     const starContainer = document.getElementById('star-rating');
     const ratingInput = document.getElementById('review-rating');
@@ -246,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const reviewForm = document.getElementById('review-form');
     if (reviewForm) {
-        reviewForm.addEventListener('submit', (e) => {
+        reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('review-name').value.trim();
             const rating = parseInt(document.getElementById('review-rating').value);
@@ -255,9 +277,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Please fill in all fields and select a rating.');
                 return;
             }
-            saveReview({ name, rating, message, date: new Date().toISOString() });
-            renderReviews();
-            renderHomeCarousel();
+            try {
+                const res = await fetch(API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, rating, message }),
+                });
+                if (!res.ok) throw new Error('Failed to submit');
+                const reviews = await res.json();
+                renderReviews(reviews);
+                renderHomeCarousel(reviews);
+            } catch {
+                alert('Failed to submit review. Please try again.');
+                return;
+            }
             reviewForm.reset();
             document.getElementById('review-rating').value = 0;
             if (starContainer) starContainer.querySelectorAll('.star').forEach(s => s.textContent = '☆');
@@ -273,33 +306,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2000);
         });
     }
-
-    renderReviews();
-
-    const renderHomeCarousel = () => {
-        const track = document.getElementById('home-reviews-track');
-        if (!track) return;
-        const reviews = getReviews();
-        if (reviews.length === 0) {
-            track.innerHTML = '<div class="flex items-center gap-6 px-12 py-8 bg-[#111] rounded-[2rem] border border-white/5 mx-4" style="width: 400px;"><span class="material-symbols-outlined text-4xl text-on-surface-variant/30">rate_review</span><p class="text-on-surface-variant/50 whitespace-nowrap">No reviews yet — be the first!</p></div>';
-            return;
-        }
-        const card = (r) => `
-            <div class="bg-[#111] rounded-[2rem] p-8 border border-white/5 hover:border-white/10 transition-all duration-300 flex-shrink-0 mx-4" style="width: 360px;">
-                <div class="flex items-center gap-1 text-amber-400 text-base mb-4">${renderStars(r.rating)}</div>
-                <p class="text-white/70 text-sm leading-relaxed mb-6">"${r.message}"</p>
-                <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-                    <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">${r.name.charAt(0).toUpperCase()}</div>
-                    <div>
-                        <div class="text-white font-bold text-sm">${r.name}</div>
-                        <div class="text-on-surface-variant/50 text-[10px]">Verified Client</div>
-                    </div>
-                </div>
-            </div>
-        `;
-        const cards = reviews.map(r => card(r)).join('');
-        track.innerHTML = cards.repeat(6);
-    };
-
-    renderHomeCarousel();
 });
