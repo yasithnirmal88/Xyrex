@@ -171,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 ScrollTrigger.refresh();
             }, 50);
+
+            // 4. Re-render home carousel when navigating to home
+            if (targetView === 'home') renderHomeCarousel();
         });
     });
 
@@ -254,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             saveReview({ name, rating, message, date: new Date().toISOString() });
             renderReviews();
+            renderHomeCarousel();
             reviewForm.reset();
             document.getElementById('review-rating').value = 0;
             if (starContainer) starContainer.querySelectorAll('.star').forEach(s => s.textContent = '☆');
